@@ -1,12 +1,17 @@
-use serde::Serialize;
-
-#[derive(Serialize)]
-#[serde(rename_all = "camelCase")]
 struct TelemetryFrame {
     speed_kph: f32,
     fuel_liters: f32,
     throttle: f32,
     brake: f32,
+}
+
+impl TelemetryFrame {
+    fn to_json(&self) -> String {
+        format!(
+            "{{\"speedKph\":{:.1},\"fuelLiters\":{:.1},\"throttle\":{:.2},\"brake\":{:.1}}}",
+            self.speed_kph, self.fuel_liters, self.throttle, self.brake
+        )
+    }
 }
 
 fn main() {
@@ -17,5 +22,5 @@ fn main() {
         brake: 0.0,
     };
 
-    println!("{}", serde_json::to_string(&frame).expect("serialize telemetry frame"));
+    println!("{}", frame.to_json());
 }
