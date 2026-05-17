@@ -1,0 +1,15 @@
+{
+  "name": "apexoverlay",
+  "private": true,
+  "version": "0.1.0",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "npm run -ws build",
+    "dev": "npm run -w @apex/overlay-ui dev",
+    "lint": "npm run -ws lint",
+    "test": "npm run -ws test"
+  }
+}
