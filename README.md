@@ -1,52 +1,37 @@
 # ApexOverlay (iRacing Overlay)
 
-A modern, clean, and actively maintained iRacing overlay platform inspired by iOverlay, built with a modular architecture so each widget can evolve independently.
+A modern, clean iRacing overlay platform inspired by iOverlay.
 
-## Vision
+## Current Test Mode (ready to test while running iRacing)
 
-Create a complete overlay suite that is:
-- **Modern**: smooth animations, theme system, responsive layouts.
-- **Clean**: unobtrusive default UI, readable typography, high-contrast telemetry.
-- **Updated**: maintainable codebase, typed contracts, test automation, and release pipelines.
+This repository now includes a local telemetry bridge endpoint plus a browser overlay UI:
 
-## MVP Widgets
+- Bridge endpoint: `http://127.0.0.1:32123/telemetry`
+- Health endpoint: `http://127.0.0.1:32123/health`
+- Overlay UI: Vite app in `apps/overlay-ui`
 
-- Relative
-- Standings
-- Input telemetry (throttle/brake/steering)
-- Fuel calculator + stint prediction
-- Track map + nearby cars
-- Spotter/race-control notifications
+You can run these side-by-side with iRacing on Windows to test overlay behavior, sizing, readability, and refresh cadence.
 
-## Target Architecture
+## Quick Start
 
-- **Desktop Host**: Tauri (Windows-first) for low overhead and tray integration.
-- **UI Layer**: React + TypeScript + Tailwind + shadcn/ui primitives.
-- **Data Layer**: Rust service consuming iRacing SDK data and exposing typed events to the UI.
-- **Overlay Runtime**: frameless always-on-top windows with per-widget positioning and scene profiles.
-- **Persistence**: SQLite for settings/profile/widget state snapshots.
+1. Terminal A:
+   - `cargo run --manifest-path services/iracing-bridge/Cargo.toml`
+2. Terminal B:
+   - `npm install`
+   - `npm run dev`
+3. Open the local Vite URL and place it on top of iRacing (borderless/windowed mode recommended for testing).
 
-See [`docs/overlay-architecture.md`](docs/overlay-architecture.md) for full details and [`docs/product-roadmap.md`](docs/product-roadmap.md) for milestones.
+> Note: Telemetry is currently bridge-generated demo data for integration testing. Real iRacing SDK ingestion is the next step.
 
-## Proposed Monorepo Layout
+## Project Layout
 
 ```
 apps/
-  desktop/        # Tauri shell + window manager
-  overlay-ui/     # React widgets + design system
+  desktop/
+  overlay-ui/
 packages/
-  telemetry-types/# shared contracts
-  widget-sdk/     # widget plugin helpers
+  telemetry-types/
+  widget-sdk/
 services/
-  iracing-bridge/ # Rust iRacing SDK adapter
+  iracing-bridge/
 ```
-
-## Getting Started (Scaffold Phase)
-
-This repository currently contains product and architecture specs to align scope and implementation approach before coding begins.
-
-Next implementation step:
-1. Scaffold `apps/overlay-ui` with Vite + React + TypeScript.
-2. Scaffold `apps/desktop` with Tauri and multi-window control.
-3. Implement `services/iracing-bridge` event stream and mock replay mode.
-
