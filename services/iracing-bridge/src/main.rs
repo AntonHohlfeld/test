@@ -1,6 +1,7 @@
 use serde::Serialize;
 
 #[derive(Serialize)]
+#[serde(rename_all = "camelCase")]
 struct TelemetryFrame {
     speed_kph: f32,
     fuel_liters: f32,
