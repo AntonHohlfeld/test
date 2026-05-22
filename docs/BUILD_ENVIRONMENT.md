@@ -14,3 +14,8 @@ dotnet --info
 dotnet restore IracingOverlay.sln
 dotnet build IracingOverlay.sln -c Release
 ```
+
+
+## Interpretation for CI/Agent Reports
+- Treat this build result as a **warning** caused by missing tooling in the container.
+- Do not mark it as a code regression unless `dotnet` is present and build fails.
