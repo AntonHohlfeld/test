@@ -37,7 +37,7 @@ public sealed class ReplayTelemetrySource : ITelemetrySource
             Throttle: _random.NextDouble(),
             Brake: _random.NextDouble() * 0.8,
             CarAhead: new NearbyCar("Ahead Driver", 12, 3, 0.6 + _random.NextDouble()),
-            CarBehind: new NearbyCar("Behind Driver", 22, 4, -0.4 - _random.NextDouble())
+            CarBehind: new NearbyCar("Behind Driver", 22, 4, 0.4 + _random.NextDouble())
         );
 
         return ValueTask.FromResult<TelemetryFrame?>(frame);

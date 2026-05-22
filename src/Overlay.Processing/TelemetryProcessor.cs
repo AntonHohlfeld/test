@@ -12,7 +12,7 @@ public sealed class TelemetryProcessor
 
         var behind = frame.CarBehind is null
             ? "Behind: --"
-            : $"Behind: #{frame.CarBehind.CarNumber} {frame.CarBehind.DriverName} ({frame.CarBehind.GapSeconds:0.00}s)";
+            : $"Behind: #{frame.CarBehind.CarNumber} {frame.CarBehind.DriverName} (+{frame.CarBehind.GapSeconds:0.00}s)";
 
         return new RelativeWidgetState(ahead, behind);
     }

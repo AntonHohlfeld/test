@@ -10,6 +10,7 @@
     <Border Background="#AA111111" CornerRadius="10" Padding="10">
         <StackPanel>
             <TextBlock Text="iRacing Overlay (Vertical Slice)" Foreground="White" FontSize="16" FontWeight="SemiBold"/>
+            <TextBlock Text="Ctrl+Shift+O: toggle click-through" Foreground="#FFBBBBBB" FontSize="11"/>
             <TextBlock x:Name="RelativeAheadText" Foreground="White" Margin="0,8,0,0"/>
             <TextBlock x:Name="RelativeBehindText" Foreground="White"/>
             <TextBlock x:Name="FuelText" Foreground="#FFE6C84F" Margin="0,8,0,0"/>
