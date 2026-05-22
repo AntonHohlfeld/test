@@ -6,5 +6,6 @@
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="../Overlay.Domain/Overlay.Domain.csproj" />
+    <ProjectReference Include="../Overlay.Processing/Overlay.Processing.csproj" />
   </ItemGroup>
 </Project>
